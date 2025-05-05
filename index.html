@@ -101,28 +101,228 @@
       transform: scale(1.07);
       z-index: 1;
     }
-    .nav-link {
+    .nav-glass {
+      background: rgba(45, 70, 51, 0.85);
+      backdrop-filter: blur(10px) saturate(1.2);
+      border: 1.5px solid #f7d06044;
+      box-shadow: 0 8px 32px 0 #2d463340;
+      margin: 0 auto;
+      max-width: 900px;
+    }
+    .nav-list {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .nav-pill {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #f7d060;
+      background: transparent;
+      transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+      box-shadow: 0 2px 8px 0 #f7d06022;
+      border: 1.5px solid transparent;
+      position: relative;
+      outline: none;
+    }
+    .nav-pill:hover, .nav-pill:focus {
+      background: #f7d060cc;
+      color: #2d4633;
+      box-shadow: 0 4px 24px 0 #f7d06055;
+      border-color: #f7d060;
+      text-decoration: none;
+    }
+    .nav-pill.active-link {
+      background: #f7d060;
+      color: #2d4633 !important;
+      box-shadow: 0 4px 24px 0 #f7d06099;
+      border-color: #f7d060;
+    }
+    @media (max-width: 1024px) {
+      .nav-glass {max-width: 98vw;}
+      .nav-list {gap: 0.25rem;}
+      .nav-pill {font-size: 1rem; padding: 0.45rem 1.1rem;}
+    }
+    /* Mobile nav overlay */
+    #mobile-nav {
+      background: rgba(45, 70, 51, 0.95);
+      backdrop-filter: blur(12px) saturate(1.2);
+      box-shadow: 0 8px 32px 0 #2d463340;
+      border: 1.5px solid #f7d06044;
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+      z-index: 40;
+    }
+    #mobile-nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.5rem 0;
+    }
+    #mobile-nav .nav-pill {
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      padding: 0.9rem 0;
+      border-radius: 9999px;
+    }
+    /* Remove underline and old nav styles */
+    .nav-underline, .glass-nav, .nav-link { display: none !important; }
+    /* --- Minimal Glassy NavBar: Name left, nav+icons right --- */
+    .nav-glassy-bar {
+      background: rgba(45, 70, 51, 0.92);
+      backdrop-filter: blur(10px) saturate(1.2);
+      border: 1.5px solid #f7d06044;
+      box-shadow: 0 8px 32px 0 #2d463340;
+      margin: 0 auto;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 2rem;
+      border-radius: 1.5rem;
+      position: relative;
+      gap: 3.5rem;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #f7d060;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-center-list {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-center-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: #f7d060;
+      font-weight: 500;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0.4rem 0.5rem;
+      border-radius: 0.5rem;
+      position: relative;
+      transition: color 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-center-link:hover, .nav-center-link:focus {
+      color: #e97c30;
+      text-decoration: none;
+    }
+    .nav-center-link.active-link {
+      color: #e97c30;
+      font-weight: 700;
+    }
+    .nav-center-link.active-link .nav-asterisk {
+      margin-left: 0.4rem;
+      font-size: 1.2rem;
+      color: #f7d060;
+      filter: drop-shadow(0 0 6px #f7d060cc);
       position: relative;
       z-index: 2;
-      transition: background 0.2s, color 0.2s;
+    }
+    .nav-center-link.active-link::before,
+    .nav-center-link.active-link::after {
+      content: '';
+      display: none;
+    }
+    .nav-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-left: 0.7rem;
+    }
+    .nav-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.6rem;
+      background: #f7d060;
+      color: #2d4633;
+      font-size: 1.15rem;
+      box-shadow: 0 2px 12px 0 #f7d06033;
+      border: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      outline: none;
+    }
+    .nav-action-btn:hover, .nav-action-btn:focus {
+      background: #e97c30;
+      color: #fff;
+      box-shadow: 0 4px 24px 0 #e97c3099;
+    }
+    .nav-action-btn.contact {
+      background: #2d4633;
       color: #f7d060;
+      border: 1.5px solid #f7d06044;
+    }
+    .nav-action-btn.contact:hover, .nav-action-btn.contact:focus {
+      background: #e97c30;
+      color: #fff;
+      box-shadow: 0 4px 24px 0 #e97c3099;
+    }
+    @media (max-width: 900px) {
+      .nav-glassy-bar {max-width: 99vw; padding: 0.5rem 0.5rem; gap: 1.5rem;}
+      .nav-right {gap: 0.7rem;}
+      .nav-center-list {gap: 0.7rem;}
+    }
+    @media (max-width: 640px) {
+      .nav-glassy-bar {flex-direction: column; align-items: stretch; padding: 0.5rem 0.2rem;}
+      .nav-right {flex-direction: column; gap: 0.5rem; margin-left: 0;}
+      .nav-center-list {justify-content: flex-start; gap: 0.5rem;}
+      .nav-actions {margin: 0.5rem auto 0 auto;}
+    }
+    /* Animated Download Arrow */
+    .nav-action-btn .fa-arrow-down {
+      animation: bounce-down 1.2s infinite alternate cubic-bezier(.4,1.6,.6,1);
       display: inline-block;
     }
-    .nav-link.active-link {
-      color: #2d4633 !important;
+    @keyframes bounce-down {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(6px) scale(1.15); }
     }
-    .nav-underline {
-      position: absolute;
-      left: 50%;
-      bottom: -4px;
-      height: 3px;
-      background: #f7d060;
-      border-radius: 2px;
-      transition: all 0.3s cubic-bezier(.4,2,.6,1);
-      z-index: 0;
-      transform: translateX(-50%);
-      opacity: 1;
-      pointer-events: none;
+    /* Animated Phone Ring */
+    .nav-action-btn.contact .fa-phone {
+      position: relative;
+      animation: phone-ring 1.2s infinite linear;
+    }
+    @keyframes phone-ring {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(-18deg); }
+      20% { transform: rotate(18deg); }
+      30% { transform: rotate(-18deg); }
+      40% { transform: rotate(18deg); }
+      50% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
     }
   </style>
 </head>
@@ -132,30 +332,22 @@
 
   <!-- Header & Navigation -->
   <header class="fixed w-full z-50 flex justify-center pt-4">
-    <nav class="bg-charlotte-green flex items-center justify-between px-6 py-3 rounded-2xl shadow-lg max-w-screen-lg w-full border border-charlotte-green">
-      <div class="text-2xl font-bold text-charlotte-yellow tracking-wider flex items-center gap-2"><span class="text-charlotte-orange">&#9679;</span>Faith Anyango</div>
-      <button id="menu-btn" class="lg:hidden text-2xl text-charlotte-yellow focus:outline-none">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul id="nav-links" class="relative hidden lg:flex space-x-4 font-semibold text-charlotte-yellow">
-        <li class="relative"><a href="#hero" class="nav-link px-4 py-2 rounded-full transition">Home</a></li>
-        <li class="relative"><a href="#about" class="nav-link px-4 py-2 rounded-full transition">About</a></li>
-        <li class="relative"><a href="#skills" class="nav-link px-4 py-2 rounded-full transition">Skills</a></li>
-        <li class="relative"><a href="#projects" class="nav-link px-4 py-2 rounded-full transition">Projects</a></li>
-        <li class="relative"><a href="#contact" class="nav-link px-4 py-2 rounded-full transition">Contact</a></li>
-        <div id="nav-underline" class="nav-underline" style="width: 0;"></div>
-      </ul>
+    <nav class="nav-glassy-bar">
+      <div class="nav-brand"><span class="text-charlotte-orange">&#9679;</span>Faith Anyango</div>
+      <div class="nav-right">
+        <ul id="nav-links" class="nav-center-list">
+          <li><a href="#hero" class="nav-center-link transition">Home</a></li>
+          <li><a href="#about" class="nav-center-link transition">About</a></li>
+          <li><a href="#skills" class="nav-center-link transition">Skills</a></li>
+          <li><a href="#projects" class="nav-center-link transition">Projects</a></li>
+          <li><a href="#contact" class="nav-center-link transition">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cv.pdf" download class="nav-action-btn" title="Download CV" aria-label="Download CV"><i class="fas fa-arrow-down"></i></a>
+          <a href="#contact" class="nav-action-btn contact" title="Contact" aria-label="Contact"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
     </nav>
-    <!-- Mobile Nav -->
-    <div id="mobile-nav" class="lg:hidden hidden bg-charlotte-green mt-2 absolute top-16 left-1/2 -translate-x-1/2 w-11/12 max-w-sm shadow-lg border border-charlotte-green rounded-2xl">
-      <ul class="flex flex-col space-y-2 px-6 py-4 font-semibold text-charlotte-yellow">
-        <li><a href="#hero" class="nav-link px-4 py-2 rounded-full transition bg-charlotte-orange text-white">Home</a></li>
-        <li><a href="#about" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">About</a></li>
-        <li><a href="#skills" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">Skills</a></li>
-        <li><a href="#projects" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">Projects</a></li>
-        <li><a href="#contact" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">Contact</a></li>
-      </ul>
-    </div>
   </header>
 
   <main class="pt-36 max-w-screen-lg mx-auto px-4">
@@ -393,30 +585,55 @@
   </footer>
   <script src="js/script.js"></script>
   <script>
-  // Animated nav underline (half width, centered below word)
-  const navLinksList = document.getElementById('nav-links');
-  const navUnderline = document.getElementById('nav-underline');
-  function updateUnderline() {
-    const active = navLinksList.querySelector('.active-link');
-    if (active) {
-      const rect = active.getBoundingClientRect();
-      const parentRect = navLinksList.getBoundingClientRect();
-      navUnderline.style.width = (rect.width / 2) + 'px';
-      navUnderline.style.left = (rect.left - parentRect.left + rect.width / 2) + 'px';
-      navUnderline.style.opacity = 1;
-    } else {
-      navUnderline.style.width = '0';
-      navUnderline.style.opacity = 0;
-    }
-  }
-  window.addEventListener('resize', updateUnderline);
-  window.addEventListener('scroll', updateUnderline);
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      setTimeout(updateUnderline, 300);
+  // --- Nav highlighting and interactivity for new nav ---
+  // Smooth scrolling for nav links
+  const navLinks = document.querySelectorAll('.nav-center-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     });
   });
-  setTimeout(updateUnderline, 400);
+  // Active nav link highlighting on scroll
+  const sections = document.querySelectorAll('main section');
+  function updateActiveNav() {
+    let scrollPos = window.scrollY + 120; // Offset for fixed header
+    let found = false;
+    sections.forEach(section => {
+      if (
+        scrollPos >= section.offsetTop &&
+        scrollPos < section.offsetTop + section.offsetHeight
+      ) {
+        navLinks.forEach(link => link.classList.remove('active-link'));
+        const activeLink = document.querySelectorAll('a[href="#' + section.id + '"]');
+        activeLink.forEach(link => link.classList.add('active-link'));
+        found = true;
+      }
+    });
+    // If no section found (top of page), highlight Home
+    if (!found) {
+      navLinks.forEach(link => link.classList.remove('active-link'));
+      document.querySelectorAll('a[href="#hero"]').forEach(link => link.classList.add('active-link'));
+    }
+    // Add asterisk/star to active link
+    document.querySelectorAll('.nav-asterisk').forEach(el => el.remove());
+    const active = document.querySelector('.nav-center-link.active-link');
+    if (active) {
+      const star = document.createElement('span');
+      star.className = 'nav-asterisk';
+      star.innerHTML = '<i class="fas fa-asterisk"></i>';
+      active.appendChild(star);
+    }
+  }
+  window.addEventListener('scroll', updateActiveNav);
+  window.addEventListener('resize', updateActiveNav);
+  setTimeout(updateActiveNav, 400);
   </script>
 </body>
 </html> 
