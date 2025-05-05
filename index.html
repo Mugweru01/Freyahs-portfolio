@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faith Anyango - Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/4ad6cfae6b.js" crossorigin="anonymous"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    .blinking-cursor { animation: blink 1s steps(2, start) infinite; }
+    @keyframes blink { to { opacity: 0; } }
+    .animate-typewriter { animation: typewriter 2.5s steps(40, end) 1 normal both; }
+    @keyframes typewriter { from { width: 0; } to { width: 100%; } }
+    .animate-move-bg { animation: movebg 12s linear infinite; }
+    @keyframes movebg { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+    .animate-fade-in { animation: fadeIn 1.2s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-social-1 { animation: fadeIn 1.2s 0.2s both; }
+    .animate-social-2 { animation: fadeIn 1.2s 0.4s both; }
+    .animate-social-3 { animation: fadeIn 1.2s 0.6s both; }
+    .animate-social-4 { animation: fadeIn 1.2s 0.8s both; }
+    .animate-social-5 { animation: fadeIn 1.2s 1s both; }
+    /* Charlotte palette */
+    .bg-charlotte-green { background-color: #2d4633; }
+    .bg-charlotte-cream { background-color: #f6f1e7; }
+    .text-charlotte-green { color: #2d4633; }
+    .text-charlotte-orange { color: #e97c30; }
+    .bg-charlotte-orange { background-color: #e97c30; }
+    .bg-charlotte-yellow { background-color: #f7d060; }
+    .text-charlotte-yellow { color: #f7d060; }
+    .border-charlotte-green { border-color: #2d4633; }
+    .border-charlotte-orange { border-color: #e97c30; }
+    .border-charlotte-yellow { border-color: #f7d060; }
+    .animate-btn {
+      transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+    }
+    .animate-btn:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 0 8px 32px 0 #f7d06099;
+    }
+    .typewriter-skill, .typewriter-soft {
+      display: inline-block;
+      overflow: visible;
+      white-space: normal;
+      border-right: none;
+      width: auto;
+      transition: none;
+      animation: none;
+    }
+    .group:hover .typewriter-skill,
+    .group:hover .typewriter-soft {
+      width: auto;
+      animation: none;
+    }
+    .hover\:shadow-charlotte-yellow\/60:hover {
+      box-shadow: 0 8px 32px 0 #f7d06099 !important;
+    }
+    .soft-skills-dance {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: unset;
+      position: static;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .soft-skill-badge {
+      position: static;
+      min-width: 0;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 2px 12px 0 #f7d06033;
+      letter-spacing: 0.01em;
+      transition: box-shadow 0.25s, transform 0.25s;
+      cursor: pointer;
+      will-change: unset;
+      animation: none;
+    }
+    .soft-skill-badge:hover {
+      box-shadow: 0 0 24px 6px #f7d060cc, 0 2px 12px 0 #f7d06033;
+      transform: scale(1.07);
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .soft-skills-dance { min-height: unset; }
+      .soft-skill-badge { font-size: 0.95rem; padding: 0.4rem 1rem; }
+    }
+    .hero-btn {
+      transition: box-shadow 0.25s, transform 0.25s, background 0.25s, color 0.25s, border 0.25s;
+      box-shadow: 0 2px 12px 0 #f7d06033;
+    }
+    .hero-btn:hover {
+      box-shadow: 0 0 24px 4px #f7d06088, 0 2px 12px 0 #f7d06033;
+      transform: scale(1.07);
+      z-index: 1;
+    }
+    .nav-link {
+      position: relative;
+      z-index: 2;
+      transition: background 0.2s, color 0.2s;
+      color: #f7d060;
+      display: inline-block;
+    }
+    .nav-link.active-link {
+      color: #2d4633 !important;
+    }
+    .nav-underline {
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      height: 3px;
+      background: #f7d060;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+      z-index: 0;
+      transform: translateX(-50%);
+      opacity: 1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-charlotte-green text-charlotte-yellow relative overflow-x-hidden">
+  <!-- Decorative Gradient Background -->
+  <div class="absolute top-0 left-0 w-full h-96 gradient-bg opacity-20 -z-10"></div>
+
+  <!-- Header & Navigation -->
+  <header class="fixed w-full z-50 flex justify-center pt-4">
+    <nav class="bg-charlotte-green flex items-center justify-between px-6 py-3 rounded-2xl shadow-lg max-w-screen-lg w-full border border-charlotte-green">
+      <div class="text-2xl font-bold text-charlotte-yellow tracking-wider flex items-center gap-2"><span class="text-charlotte-orange">&#9679;</span>Faith Anyango</div>
+      <button id="menu-btn" class="lg:hidden text-2xl text-charlotte-yellow focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul id="nav-links" class="relative hidden lg:flex space-x-4 font-semibold text-charlotte-yellow">
+        <li class="relative"><a href="#hero" class="nav-link px-4 py-2 rounded-full transition">Home</a></li>
+        <li class="relative"><a href="#about" class="nav-link px-4 py-2 rounded-full transition">About</a></li>
+        <li class="relative"><a href="#skills" class="nav-link px-4 py-2 rounded-full transition">Skills</a></li>
+        <li class="relative"><a href="#projects" class="nav-link px-4 py-2 rounded-full transition">Projects</a></li>
+        <li class="relative"><a href="#contact" class="nav-link px-4 py-2 rounded-full transition">Contact</a></li>
+        <div id="nav-underline" class="nav-underline" style="width: 0;"></div>
+      </ul>
+    </nav>
+    <!-- Mobile Nav -->
+    <div id="mobile-nav" class="lg:hidden hidden bg-charlotte-green mt-2 absolute top-16 left-1/2 -translate-x-1/2 w-11/12 max-w-sm shadow-lg border border-charlotte-green rounded-2xl">
+      <ul class="flex flex-col space-y-2 px-6 py-4 font-semibold text-charlotte-yellow">
+        <li><a href="#hero" class="nav-link px-4 py-2 rounded-full transition bg-charlotte-orange text-white">Home</a></li>
+        <li><a href="#about" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">About</a></li>
+        <li><a href="#skills" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">Skills</a></li>
+        <li><a href="#projects" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">Projects</a></li>
+        <li><a href="#contact" class="nav-link px-4 py-2 rounded-full transition hover:bg-charlotte-yellow hover:text-charlotte-green">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="pt-36 max-w-screen-lg mx-auto px-4">
+    <!-- Hero Section -->
+    <section id="hero" class="flex flex-col md:flex-row items-center justify-between py-16 bg-charlotte-green rounded-3xl shadow-xl mb-16">
+      <div class="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-2 leading-tight">Faith<br><span class="text-charlotte-yellow">Anyango</span></h1>
+        <h2 class="text-xl md:text-2xl font-semibold text-charlotte-yellow mb-4">Data Analyst & Talent Acquisition Specialist</h2>
+        <p class="text-lg text-charlotte-yellow mb-6">Results-driven Data Analyst and Talent Acquisition Specialist with expertise in real-time data tracking, sales analytics, and strategic recruitment.</p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-4">
+          <a href="#projects" class="hero-btn bg-charlotte-green text-charlotte-yellow border-2 border-charlotte-yellow py-3 px-8 rounded-full font-semibold shadow-md flex items-center gap-3 group transition duration-300 hover:bg-charlotte-yellow hover:text-charlotte-green hover:border-charlotte-green focus:outline-none focus:ring-2 focus:ring-charlotte-yellow">
+            <span class="inline-block text-2xl"><i class="fas fa-eye"></i></span>
+            <span class="text-lg font-bold tracking-wide">View Projects</span>
+          </a>
+          <a href="cv.pdf" download class="hero-btn bg-charlotte-yellow text-charlotte-green border-2 border-charlotte-green py-3 px-8 rounded-full font-semibold shadow-md flex items-center gap-3 group transition duration-300 hover:bg-charlotte-green hover:text-charlotte-yellow hover:border-charlotte-yellow focus:outline-none focus:ring-2 focus:ring-charlotte-yellow">
+            <span class="inline-block text-2xl"><i class="fas fa-cloud-download-alt"></i></span>
+            <span class="text-lg font-bold tracking-wide">Download CV</span>
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center mt-10 md:mt-0">
+        <div class="relative">
+          <div class="absolute -top-6 -left-6 w-44 h-44 bg-charlotte-yellow rounded-full opacity-30 z-0"></div>
+          <img src="img/profile.jpg" alt="Faith Anyango" class="w-56 h-56 object-cover rounded-full shadow-lg border-4 border-charlotte-orange relative z-10">
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="flex flex-col md:flex-row items-center bg-charlotte-green rounded-3xl shadow-xl p-8 md:p-12 my-16 gap-8 border border-charlotte-yellow">
+      <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+        <img src="img/profile.jpg" alt="Faith Anyango" class="w-40 h-40 object-cover rounded-2xl shadow-lg border-4 border-charlotte-orange">
+      </div>
+      <div class="md:w-2/3">
+        <h2 class="text-3xl font-bold text-charlotte-yellow mb-4">About Me</h2>
+        <p class="text-lg text-charlotte-yellow mb-4">Results-driven Data Analyst and Talent Acquisition Specialist with expertise in real-time data tracking, sales analytics, and strategic recruitment. Proficient in Excel, SQL, Python, R, Tableau, and Power BI, with a strong ability to analyze market trends, optimize business strategies, and support data-driven decision-making. Skilled in team leadership, data integrity management, and recruitment, ensuring operational efficiency and high-performing teams. Proven track record of increasing hiring efficiency by 20% and improving sales data accuracy by 35%.</p>
+        <p class="text-lg text-charlotte-yellow">Based in Nairobi, Kenya. Passionate about leveraging data to drive business success and building high-performing teams through strategic recruitment and analytics.</p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="my-16 bg-charlotte-green rounded-3xl shadow-xl p-8 md:p-12 border border-charlotte-yellow">
+      <h2 class="text-3xl font-bold text-charlotte-yellow mb-8 text-center">Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold text-charlotte-orange mb-4 flex items-center"><i class="fas fa-tools mr-2"></i>Technical Skills</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-chart-bar text-charlotte-yellow text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Power BI</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-chart-pie text-charlotte-orange text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Tableau</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-file-excel text-charlotte-yellow text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Excel (Pivot Tables, VLOOKUP)</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-database text-charlotte-orange text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">SQL</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fab fa-python text-charlotte-yellow text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Python</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-code text-charlotte-yellow text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">R</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-tachometer-alt text-charlotte-orange text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Performance Monitoring</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-bullseye text-charlotte-yellow text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">KPI Analysis</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-chart-line text-charlotte-yellow text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Market Trend Analysis</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-project-diagram text-charlotte-orange text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Predictive Modeling</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-user-tie text-charlotte-yellow text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Recruitment Strategy</span>
+            </div>
+            <div class="bg-charlotte-green flex items-center gap-3 p-4 rounded-xl shadow hover:shadow-2xl hover:shadow-charlotte-yellow/60 transition border border-charlotte-yellow group cursor-pointer relative overflow-hidden">
+              <i class="fas fa-user-check text-charlotte-orange text-2xl"></i>
+              <span class="font-mono text-charlotte-yellow typewriter-skill">Candidate Screening</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-charlotte-orange mb-4 flex items-center"><i class="fas fa-user-friends mr-2"></i>Soft Skills</h3>
+          <div class="soft-skills-dance">
+            <span class="soft-skill-badge bg-charlotte-yellow text-charlotte-green typewriter-soft">Analytical Thinking</span>
+            <span class="soft-skill-badge bg-charlotte-orange text-white typewriter-soft">Attention to Detail</span>
+            <span class="soft-skill-badge bg-charlotte-green text-charlotte-yellow border border-charlotte-yellow typewriter-soft">Leadership</span>
+            <span class="soft-skill-badge bg-charlotte-yellow text-charlotte-green typewriter-soft">Communication</span>
+            <span class="soft-skill-badge bg-charlotte-orange text-white typewriter-soft">Talent Management</span>
+            <span class="soft-skill-badge bg-charlotte-green text-charlotte-yellow border border-charlotte-yellow typewriter-soft">High-Pressure Adaptability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education" class="my-16 bg-charlotte-green rounded-3xl shadow-xl p-8 md:p-12 border border-charlotte-yellow">
+      <h2 class="text-3xl font-bold text-charlotte-yellow mb-8 text-center">Education & Certifications</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-charlotte-green border border-charlotte-yellow rounded-xl p-6 shadow group transition hover:shadow-2xl hover:shadow-charlotte-yellow/60 cursor-pointer flex flex-col items-center text-center">
+          <span class="text-4xl mb-3 text-charlotte-yellow"><i class="fas fa-user-tie"></i></span>
+          <h3 class="text-xl font-semibold text-charlotte-yellow mb-2">Diploma in HR & Talent Acquisition</h3>
+          <p class="text-charlotte-orange font-semibold mb-1">University of the People</p>
+          <span class="text-sm text-charlotte-yellow/80">Graduated July 2023</span>
+        </div>
+        <div class="bg-charlotte-green border border-charlotte-yellow rounded-xl p-6 shadow group transition hover:shadow-2xl hover:shadow-charlotte-yellow/60 cursor-pointer flex flex-col items-center text-center">
+          <span class="text-4xl mb-3 text-charlotte-yellow"><i class="fas fa-graduation-cap"></i></span>
+          <h3 class="text-xl font-semibold text-charlotte-yellow mb-2">Certificate in Science Laboratory Management</h3>
+          <p class="text-charlotte-orange font-semibold mb-1">Thika School of Medical and Health Sciences</p>
+          <span class="text-sm text-charlotte-yellow/80">Graduated Nov 2024</span>
+        </div>
+        <div class="bg-charlotte-green border border-charlotte-yellow rounded-xl p-6 shadow group transition hover:shadow-2xl hover:shadow-charlotte-yellow/60 cursor-pointer flex flex-col items-center text-center">
+          <span class="text-4xl mb-3 text-charlotte-orange"><i class="fab fa-google"></i></span>
+          <h3 class="text-xl font-semibold text-charlotte-yellow mb-2">Google Data Analytics Certification</h3>
+          <p class="text-charlotte-orange font-semibold mb-1">Google</p>
+          <span class="text-sm text-charlotte-yellow/80">Certified Sept 2024</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="my-16 bg-charlotte-green rounded-3xl shadow-xl p-8 md:p-12 border border-charlotte-yellow">
+      <h2 class="text-3xl font-bold text-charlotte-yellow mb-8 text-center">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="relative group rounded-2xl overflow-hidden shadow-lg bg-charlotte-green flex flex-col border border-charlotte-yellow">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Sales Performance Dashboard" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-2xl">
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-bold text-charlotte-yellow mb-2">Sales Performance Dashboard</h3>
+            <p class="text-charlotte-yellow mb-2">Designed an interactive dashboard for tracking sales trends and KPIs, enabling real-time performance monitoring and data-driven decision-making.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-charlotte-yellow text-charlotte-green text-xs font-semibold px-2 py-1 rounded">Power BI</span>
+              <span class="bg-charlotte-orange text-white text-xs font-semibold px-2 py-1 rounded">Excel</span>
+            </div>
+            <a href="#" class="mt-auto inline-block bg-charlotte-orange text-white px-4 py-2 rounded-full font-semibold hover:bg-charlotte-yellow hover:text-charlotte-green transition">View Project</a>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="relative group rounded-2xl overflow-hidden shadow-lg bg-charlotte-green flex flex-col border border-charlotte-yellow">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Candidate Selection Model" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-2xl">
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-bold text-charlotte-yellow mb-2">Candidate Selection Model</h3>
+            <p class="text-charlotte-yellow mb-2">Developed a data-driven recruitment model for optimizing hiring decisions, improving efficiency and quality of candidate selection.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-charlotte-yellow text-charlotte-green text-xs font-semibold px-2 py-1 rounded">Python</span>
+              <span class="bg-charlotte-orange text-white text-xs font-semibold px-2 py-1 rounded">SQL</span>
+            </div>
+            <a href="#" class="mt-auto inline-block bg-charlotte-orange text-white px-4 py-2 rounded-full font-semibold hover:bg-charlotte-yellow hover:text-charlotte-green transition">View Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="my-16 bg-charlotte-green rounded-3xl shadow-xl p-8 md:p-12 border border-charlotte-yellow">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="flex-1">
+          <h2 class="text-3xl font-bold text-charlotte-yellow mb-6">Contact</h2>
+          <div class="bg-charlotte-green text-charlotte-yellow font-mono rounded-lg p-6 text-base shadow-inner relative overflow-hidden border border-charlotte-yellow">
+            <pre class="whitespace-pre-wrap animate-typewriter" id="contact-code">{
+  "email": "faithfreyah315@gmail.com",
+  "phone": "+254 79 945 190",
+  "location": "Nairobi, Kenya"<span class="blinking-cursor">|</span>
+}</pre>
+          </div>
+        </div>
+        <div class="flex-1 w-full">
+          <form class="space-y-4">
+            <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg border border-charlotte-yellow focus:outline-none focus:ring-2 focus:ring-charlotte-orange bg-charlotte-green text-charlotte-yellow" disabled>
+            <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg border border-charlotte-yellow focus:outline-none focus:ring-2 focus:ring-charlotte-orange bg-charlotte-green text-charlotte-yellow" disabled>
+            <textarea placeholder="Your Message" class="w-full p-3 rounded-lg border border-charlotte-yellow focus:outline-none focus:ring-2 focus:ring-charlotte-orange bg-charlotte-green text-charlotte-yellow" rows="4" disabled></textarea>
+            <button type="submit" class="bg-charlotte-orange text-white py-3 px-6 rounded-lg font-semibold cursor-not-allowed opacity-60" disabled>Send Message</button>
+          </form>
+          <p class="text-xs text-charlotte-yellow mt-2">Contact form coming soon. Please use email for now.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-charlotte-green text-charlotte-yellow shadow-2xl mt-12 relative overflow-hidden rounded-t-3xl">
+    <div class="max-w-screen-lg mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+      <!-- Brand/Name -->
+      <div>
+        <div class="text-2xl font-bold mb-4 tracking-wide flex items-center gap-2" style="font-family: 'Playfair Display', serif;"><span class="text-charlotte-orange">&#9679;</span>Faith Anyango</div>
+        <div class="font-mono text-sm text-charlotte-yellow/80">// Data Analyst & Talent Acquisition Specialist</div>
+      </div>
+      <!-- Contact Info (Code Style) -->
+      <div>
+        <div class="font-bold mb-2 tracking-wide">CONTACT</div>
+        <div class="font-mono text-charlotte-yellow/90 text-sm bg-charlotte-cream/80 rounded p-3 relative border border-charlotte-yellow">
+          <span class="block">email: <span class="text-charlotte-orange">faithfreyah315@gmail.com</span></span>
+          <span class="block">phone: <span class="text-charlotte-orange">+254 79 945 190</span></span>
+          <span class="block">location: <span class="text-charlotte-orange">Nairobi, Kenya</span></span>
+          <span class="absolute right-2 bottom-2 text-charlotte-orange blinking-cursor">|</span>
+        </div>
+      </div>
+      <!-- Quick Links (Code Style) -->
+      <div>
+        <div class="font-bold mb-2 tracking-wide">NAVIGATION</div>
+        <div class="font-mono text-charlotte-yellow/90 text-sm bg-charlotte-cream/80 rounded p-3 space-y-1 border border-charlotte-yellow">
+          <a href="#about" class="block hover:text-charlotte-orange transition">about:me</a>
+          <a href="#skills" class="block hover:text-charlotte-orange transition">skills[]</a>
+          <a href="#projects" class="block hover:text-charlotte-orange transition">projects()</a>
+          <a href="#contact" class="block hover:text-charlotte-orange transition">contact@</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-screen-lg mx-auto px-6 pb-6 flex flex-col md:flex-row items-center justify-between border-t border-charlotte-yellow pt-6">
+      <div class="flex space-x-6 mb-4 md:mb-0 animate-fade-in">
+        <a href="#" class="text-charlotte-cream hover:text-charlotte-orange text-2xl transition-transform transform hover:scale-125 animate-social-1" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="text-charlotte-yellow hover:text-charlotte-orange text-2xl transition-transform transform hover:scale-125 animate-social-2" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/faith-freyah-886020274/" target="_blank" class="text-charlotte-orange hover:text-charlotte-yellow text-2xl transition-transform transform hover:scale-125 animate-social-3" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="text-charlotte-yellow hover:text-charlotte-orange text-2xl transition-transform transform hover:scale-125 animate-social-4" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="text-charlotte-orange hover:text-charlotte-yellow text-2xl transition-transform transform hover:scale-125 animate-social-5" title="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p class="text-charlotte-yellow/80 text-xs font-mono mt-2 md:mt-0">© 2024 Faith Anyango. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+  <script>
+  // Animated nav underline (half width, centered below word)
+  const navLinksList = document.getElementById('nav-links');
+  const navUnderline = document.getElementById('nav-underline');
+  function updateUnderline() {
+    const active = navLinksList.querySelector('.active-link');
+    if (active) {
+      const rect = active.getBoundingClientRect();
+      const parentRect = navLinksList.getBoundingClientRect();
+      navUnderline.style.width = (rect.width / 2) + 'px';
+      navUnderline.style.left = (rect.left - parentRect.left + rect.width / 2) + 'px';
+      navUnderline.style.opacity = 1;
+    } else {
+      navUnderline.style.width = '0';
+      navUnderline.style.opacity = 0;
+    }
+  }
+  window.addEventListener('resize', updateUnderline);
+  window.addEventListener('scroll', updateUnderline);
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      setTimeout(updateUnderline, 300);
+    });
+  });
+  setTimeout(updateUnderline, 400);
+  </script>
+</body>
+</html> 
